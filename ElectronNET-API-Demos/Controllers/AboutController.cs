@@ -2,7 +2,7 @@
 
 namespace ElectronNET_API_Demos.Controllers
 {
-    public class HomeController : Controller
+    public class AboutController : Controller
     {
         public IActionResult Index()
         {
