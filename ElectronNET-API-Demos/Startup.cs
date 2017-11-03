@@ -56,7 +56,7 @@ namespace ElectronNET_API_Demos
             {
                 Width = 1152,
                 Height = 864,
-                Show = true
+                Show = false
             });
 
             browserWindow.OnReadyToShow += () => browserWindow.Show();
