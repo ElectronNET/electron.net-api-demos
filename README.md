@@ -3,11 +3,13 @@ This is a desktop app that interactively and with sample code demonstrates core 
   
 Use this app to see what you can do with Electron.NET and use the source code to learn how to create a basic Electron.NET app.  
   
+This Demo-App based on the [Electron API Demos](https://github.com/electron/electron-api-demos)  
+  
 ---  
   
 ## Using
   
-You'll need [Node.js (v.8.x)](https://nodejs.org) and [.NET Core SDK](https://www.microsoft.com/net/download/core) installed on your computer in order to build this app.
+You'll need [Node.js (v.8.x)](https://nodejs.org) and [.NET Core SDK](https://www.microsoft.com/net/download/core) installed on your computer in order to start or build this app.
 
 ```bash
 $ git clone https://github.com/ElectronNET/electron.net-api-demos.git
