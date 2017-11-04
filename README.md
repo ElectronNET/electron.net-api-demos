@@ -5,9 +5,7 @@ This is a desktop app that interactively and with sample code demonstrates core 
 Use this app to see what you can do with Electron.NET and use the source code to learn how to create a basic Electron.NET app.  
   
 This Demo-App based on the [Electron API Demos](https://github.com/electron/electron-api-demos)  
-  
-  ![Electron.NET API Demos](https://github.com/ElectronNET/electron.net-api-demos/blob/master/ElectronNET-API-Demos/wwwroot/assets/img/about.png)
-  
+
 
 ---  
   
