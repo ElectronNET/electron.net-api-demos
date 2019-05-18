@@ -1,4 +1,5 @@
-﻿using ElectronNET.API;
+﻿using System.Threading.Tasks;
+using ElectronNET.API;
 using ElectronNET.API.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,7 @@ namespace ElectronNET_API_Demos.Controllers
                     await Electron.Dialog.ShowMessageBoxAsync(options);
                 });
 
-                Electron.App.WillQuit += () => Electron.GlobalShortcut.UnregisterAll();
+                Electron.App.WillQuit += arg => Task.Run(() => Electron.GlobalShortcut.UnregisterAll());
             }
 
             return View();
