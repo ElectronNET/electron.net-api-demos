@@ -1,0 +1,69 @@
+﻿<template class="task-template">
+    <section id="progress-bar-section" class="section js-section u-category-native-ui">
+        <header class="section-header">
+            <div class="section-wrapper">
+                <h1>
+                    Set Progress Bar
+                </h1>
+                <h3>The <code>BrowserWindow.SetProgressBar</code> method in Electron.NET allows you set a progress bar that appers in the task bar.</h3>
+
+                <p>This module works in the main process.</p>
+
+                <p>You find the sample source code in <code>Controllers\ProgressBarController.cs</code>.</p>
+            </div>
+        </header>
+
+        <div class="demo">
+            <div class="demo-wrapper">
+                <button id="set-progress-bar-toggle" class="js-container-target demo-toggle-button">
+                    Set the Progress Bar in Taskbar
+                    <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux (Unity only)<span class="demo-meta-divider">|</span> Process: Main</div>
+                </button>
+                <div class="demo-box">
+                    <div class="demo-controls">
+                        <button class="demo-button" id="set-progress-bar">View Demo</button>
+                    </div>
+                    <p>This demonstrates using the <code>BrowserWindow.SetProgressBar</code> to set the window's progress.</p>
+                    <p>Clicking the demo button will set the progress to 50%.</p>
+                    <h5>Main Process (C#)</h5>
+                    <pre><code class="csharp">var mainWindow = Electron.WindowManager.BrowserWindows.First();
+mainWindow.SetProgressBar(0.5);</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo">
+            <div class="demo-wrapper">
+                <button id="clear-progress-bar-toggle" class="js-container-target demo-toggle-button">
+                    Clear the Progress Bar from Taskbar
+                    <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux (Unity only)<span class="demo-meta-divider">|</span> Process: Main</div>
+                </button>
+                <div class="demo-box">
+                    <div class="demo-controls">
+                        <button class="demo-button" id="clear-progress-bar">View Demo</button>
+                    </div>
+                    <p>This demonstrates using the <code>BrowserWindow.SetProgressBar</code> to clear the window's progress.</p>
+                        <h5>Main Process (C#)</h5>
+                        <pre><code class="csharp">var mainWindow = Electron.WindowManager.BrowserWindows.First();
+mainWindow.SetProgressBar(-1);</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            (function () {
+                const { ipcRenderer } = require("electron");
+
+                document.getElementById("set-progress-bar").addEventListener("click", () => {
+                    ipcRenderer.send("set-progress-bar");
+                });
+
+                document.getElementById("clear-progress-bar").addEventListener("click", () => {
+                    ipcRenderer.send("clear-progress-bar");
+                });
+            }());
+        </script>
+
+
+    </section>
+</template>
