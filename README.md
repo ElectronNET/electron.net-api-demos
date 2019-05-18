@@ -17,7 +17,6 @@ You'll need [Node.js (v.8.x)](https://nodejs.org) and [.NET Core SDK](https://ww
 $ dotnet tool install --global ElectronNET.CLI
 $ git clone https://github.com/ElectronNET/electron.net-api-demos.git
 $ cd electron.net-api-demos
-$ cd ElectronNET-API-Demos
 $ electronize start
 ```  
   
