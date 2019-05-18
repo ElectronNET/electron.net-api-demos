@@ -10,13 +10,13 @@ namespace ElectronNET_API_Demos.Controllers
         {
             if (HybridSupport.IsElectronActive)
             {
-                Electron.IpcMain.On("set-progress-bar", async (args) =>
+                Electron.IpcMain.On("set-progress-bar", (args) =>
                 {
                     var mainWindow = Electron.WindowManager.BrowserWindows.First();
-                    mainWindow.SetProgressBar(0.5);
+                    mainWindow.SetProgressBar(5);
                 });
 
-                Electron.IpcMain.On("clear-progress-bar", async (args) =>
+                Electron.IpcMain.On("clear-progress-bar", (args) =>
                 {
                     var mainWindow = Electron.WindowManager.BrowserWindows.First();
                     mainWindow.SetProgressBar(-1);
