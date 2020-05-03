@@ -15,14 +15,11 @@ namespace ElectronNET_API_Demos.Controllers
 
                 Electron.IpcMain.On("new-window", async (args) =>
                 {
-
                     await Electron.WindowManager.CreateWindowAsync(viewPath);
-
                 });
 
                 Electron.IpcMain.On("manage-window", async (args) =>
                 {
-
                     var browserWindow = await Electron.WindowManager.CreateWindowAsync(viewPath);
                     browserWindow.OnMove += UpdateReply;
                     browserWindow.OnResize += UpdateReply;

@@ -16,13 +16,15 @@
                     Then include the UseElectron WebHostBuilder-Extension into the Program.cs-file of your ASP.NET Core project.
 
                     <pre>
-                        <code class="csharp">public static IWebHost BuildWebHost(string[] args)
-{
-    return WebHost.CreateDefaultBuilder(args)
-        .UseElectron(args)
-        .UseStartup<Startup>()
-        .Build();
-}</code>
+                        <code class="csharp">
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseElectron(args);
+            webBuilder.UseStartup<Startup>();
+        });
+                        </code>
                     </pre>
                 </section>
                 <section class="about-section about-code">

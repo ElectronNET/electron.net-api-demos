@@ -22,11 +22,12 @@
     <link rel="import" href="dialogs">
     <link rel="import" href="tray">
     <link rel="import" href="ipc">
+    <link rel="import" href="hosthook">
     <link rel="import" href="appsysinformation">
     <link rel="import" href="clipboard">
     <link rel="import" href="pdf">
-    <link rel="import" href="progressbar">
     <link rel="import" href="desktopcapturer">
+    <link rel="import" href="update">
 </head>
 <body>
 
@@ -62,7 +63,6 @@
             <button type="button" id="button-notifications" data-section="notifications" class="nav-button"> Notifications with and without custom <em>image</em></button>
             <button type="button" id="button-dialogs" data-section="dialogs" class="nav-button">Use system <em>dialogs</em></button>
             <button type="button" id="button-tray" data-section="tray" class="nav-button">Put your app in the <em>tray</em></button>
-            <button type="button" id="button-progress-bar" data-section="progress-bar" class="nav-button">Show <em>progress</em></button>
         </div>
 
         <div class="nav-item u-category-communication">
@@ -71,6 +71,7 @@
                 Communication
             </h5>
             <button type="button" id="button-ipc" data-section="ipc" class="nav-button">Communicate between the <em>two processes</em></button>
+            <button type="button" id="button-hosthook" data-section="hosthook" class="nav-button">Execute your own <em>TypeScript code</em></button>
         </div>
 
         <div class="nav-item u-category-system">
@@ -81,6 +82,15 @@
             <button type="button" id="button-app-sys-information" data-section="app-sys-information" class="nav-button">Get app or user <em>system information</em></button>
             <button type="button" id="button-clipboard" data-section="clipboard" class="nav-button">Copy and paste from the <em>clipboard</em></button>
             <!-- <button type="button" id="button-protocol" data-section="protocol" class="nav-button">Launch app from <em>protocol handler</em></button> -->
+        </div>
+
+        <div class="nav-item u-category-update">
+            <h5 class="nav-category">
+                <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-update"></use></svg>
+                Update
+            </h5>
+            <button type="button" id="button-update" data-section="update" class="nav-button">Enable apps to <em>update</em> themselves
+            </button>
         </div>
 
         <div class="nav-item u-category-media">

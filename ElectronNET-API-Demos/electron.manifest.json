@@ -1,3 +1,46 @@
 {
-  "executable": "ElectronNET-API-Demos"
+  "executable": "ElectronNET-API-Demos",
+  "splashscreen": {
+    "imageFile": "/wwwroot/assets/img/about@2x.png"
+  },
+  "name": "ElectronNET-API-Demos",
+  "author": "Gregor Biswanger",
+  "singleInstance": false,
+  "build": {
+    "appId": "com.electronnet-api-demos.app",
+    "productName": "ElectronNET-API-Demos",
+    "copyright": "Copyright © 2020",
+    "buildVersion": "8.31.1",
+    "compression": "maximum",
+    "win": {
+      "icon": "Assets/electron.ico",
+      "publish": [
+        {
+          "provider": "github",
+          "owner": "ElectronNET",
+          "repo": "electron.net-api-demos",
+          "token": ">> Insert GH_TOKEN here! <<"
+        }
+      ]
+    },
+    "directories": {
+      "output": "../../../bin/Desktop",
+      "buildResources": "Assets"
+    },
+    "extraResources": [
+      {
+        "from": "./bin",
+        "to": "bin",
+        "filter": [ "**/*" ]
+      }
+    ],
+    "files": [
+      {
+        "from": "./ElectronHostHook/node_modules",
+        "to": "ElectronHostHook/node_modules",
+        "filter": [ "**/*" ]
+      },
+      "**/*"
+    ]
+  }
 }

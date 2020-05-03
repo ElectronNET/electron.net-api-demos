@@ -31,8 +31,9 @@ namespace ElectronNET_API_Demos.Controllers
                         {
                             // on reload, start fresh and close any old
                             // open secondary windows
+                            var mainWindowId = Electron.WindowManager.BrowserWindows.ToList().First().Id;
                             Electron.WindowManager.BrowserWindows.ToList().ForEach(browserWindow => {
-                                if(browserWindow.Id != 1)
+                                if(browserWindow.Id != mainWindowId)
                                 {
                                     browserWindow.Close();
                                 }
@@ -111,7 +112,9 @@ namespace ElectronNET_API_Demos.Controllers
                 new MenuItem { Label = "Electron.NET", Type = MenuType.checkbox, Checked = true }
             };
 
-            var mainWindow = Electron.WindowManager.BrowserWindows.First();
+            var mainWindow = Electron.WindowManager.BrowserWindows.FirstOrDefault();
+            if (mainWindow == null) return;
+
             Electron.Menu.SetContextMenu(mainWindow, menu);
 
             Electron.IpcMain.On("show-context-menu", (args) =>
