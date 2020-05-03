@@ -6,6 +6,7 @@ Use this app to see what you can do with Electron.NET and use the source code to
   
 This Demo-App based on the [Electron API Demos](https://github.com/electron/electron-api-demos)  
 
+![Image of Electron.NET API Demos App](https://github.com/ElectronNET/electron.net-api-demos/raw/master/screenshot.jpg)
 
 ---  
   
@@ -16,8 +17,8 @@ You'll need [Node.js (v.12.x)](https://nodejs.org) and [.NET Core SDK](https://w
 ```bash
 $ dotnet tool install --global ElectronNET.CLI
 $ git clone https://github.com/ElectronNET/electron.net-api-demos.git
-$ cd electron.net-api-demos/ElectronNET-API-Demos/
+$ cd electron.net-api-demos
 $ electronize start
 ```  
-  
+
 **Enjoy!**
