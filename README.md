@@ -11,12 +11,12 @@ This Demo-App based on the [Electron API Demos](https://github.com/electron/elec
   
 ## Using
   
-You'll need [Node.js (v.8.x)](https://nodejs.org) and [.NET Core SDK](https://www.microsoft.com/net/download/core) installed on your computer in order to start or build this app.
+You'll need [Node.js (v.12.x)](https://nodejs.org) and [.NET Core SDK](https://www.microsoft.com/net/download/core) installed on your computer in order to start or build this app.
 
 ```bash
 $ dotnet tool install --global ElectronNET.CLI
 $ git clone https://github.com/ElectronNET/electron.net-api-demos.git
-$ cd electron.net-api-demos
+$ cd electron.net-api-demos/ElectronNET-API-Demos/
 $ electronize start
 ```  
   
