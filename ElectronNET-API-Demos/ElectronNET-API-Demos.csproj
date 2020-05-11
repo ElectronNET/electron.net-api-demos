@@ -3,7 +3,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ElectronNET.API" Version="8.31.1" />
+    <PackageReference Include="ElectronNET.API" Version="8.31.2" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Assets\electron.ico">
