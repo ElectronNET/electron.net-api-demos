@@ -1,0 +1,1 @@
+dotnet tool install --global ElectronNET.CLI
