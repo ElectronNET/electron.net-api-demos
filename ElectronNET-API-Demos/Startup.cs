@@ -1,26 +1,27 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using ElectronNET.API;
+using ElectronNET.API.Entities;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ElectronNET.API;
-using ElectronNET.API.Entities;
 using Microsoft.Extensions.Hosting;
 
-namespace ElectronNET_API_Demos
+namespace ElectronNET.WebApp
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
+        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,43 +31,87 @@ namespace ElectronNET_API_Demos
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
 
             if (HybridSupport.IsElectronActive)
             {
-                ElectronBootstrap();
+                Electron.App.Ready += () => ElectronBootstrap();
             }
         }
 
         public async void ElectronBootstrap()
         {
+            //AddDevelopmentTests();
+
             var browserWindow = await Electron.WindowManager.CreateWindowAsync(new BrowserWindowOptions
             {
                 Width = 1152,
                 Height = 940,
-                Show = false
-            });
+                Show = true
+            }).ConfigureAwait(false);
 
             await browserWindow.WebContents.Session.ClearCacheAsync();
 
-            browserWindow.OnReadyToShow += () => browserWindow.Show();
-            browserWindow.SetTitle("Electron.NET API Demos");
+            browserWindow.SetTitle(Configuration["DemoTitleInSettings"]);
+        }
+
+        private static void AddDevelopmentTests()
+        {
+            // NOTE: on mac you will need to allow the app to post notifications when asked.
+
+            Electron.App.On("activate", (obj) =>
+            {
+                // obj should be a boolean that represents where there are active windows or not.
+                var hasWindows = (bool) obj;
+
+                Electron.Notification.Show(
+                    new NotificationOptions("Activate", $"activate event has been captured. Active windows = {hasWindows}")
+                    {
+                        Silent = false,
+                    });
+            });
+
+            Electron.Dock.SetMenu(new[]
+            {
+                new MenuItem
+                {
+                    Type = MenuType.normal,
+                    Label = "MenuItem",
+                    Click = () =>
+                    {
+                        Electron.Notification.Show(new NotificationOptions(
+                            "Dock MenuItem Click",
+                            "A menu item added to the Dock was selected;"));
+                    },
+                },
+                new MenuItem
+                {
+                    Type = MenuType.submenu,
+                    Label = "SubMenu",
+                    Submenu = new[]
+                    {
+                        new MenuItem
+                        {
+                            Type = MenuType.normal,
+                            Label = "Sub MenuItem",
+                            Click = () =>
+                            {
+                                Electron.Notification.Show(new NotificationOptions(
+                                    "Dock Sub MenuItem Click",
+                                    "A menu item added to the Dock was selected;"));
+                            },
+                        },
+                    }
+                }
+            });
         }
     }
 }

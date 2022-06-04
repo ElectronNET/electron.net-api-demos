@@ -2,7 +2,7 @@
 using ElectronNET.API;
 using ElectronNET.API.Entities;
 
-namespace ElectronNET_API_Demos.Controllers
+namespace ElectronNET.WebApp.Controllers
 {
     public class NotificationsController : Controller
     {

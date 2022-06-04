@@ -17,6 +17,6 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "exceljs": "^4.3.0"
+    "exceljs": "^1.10.0"
   }
 }

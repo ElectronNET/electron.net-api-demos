@@ -2,7 +2,7 @@
 using ElectronNET.API;
 using System.Linq;
 
-namespace ElectronNET_API_Demos.Controllers
+namespace ElectronNET.WebApp.Controllers
 {
     public class IpcController : Controller
     {

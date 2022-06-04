@@ -2,7 +2,7 @@
 using ElectronNET.API;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ElectronNET_API_Demos.Controllers
+namespace ElectronNET.WebApp.Controllers
 {
     public class UpdateController : Controller
     {
