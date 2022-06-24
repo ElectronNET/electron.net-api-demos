@@ -10,7 +10,7 @@ Of course, it's made with Electron actually. It's **Cross Platform**, If you're 
   
 ## Using
   
-You'll need [Node.js (v18.x)](https://nodejs.org) and [.NET Core SDK v6](https://www.microsoft.com/net/download) installed on your computer in order to start or build this app.
+You'll need [Node.js (v16.5.x)](https://nodejs.org) and [.NET Core SDK v6](https://www.microsoft.com/net/download) installed on your computer in order to start or build this app.
 
 ```bash
 $ dotnet tool install --global ElectronNET.CLI
