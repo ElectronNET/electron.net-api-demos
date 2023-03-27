@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ElectronNET.API;
 using ElectronNET.API.Entities;
 
-namespace ElectronNET_API_Demos.Controllers
+namespace ElectronNET.WebApp.Controllers
 {
     public class WindowsController : Controller
     {
@@ -20,6 +20,7 @@ namespace ElectronNET_API_Demos.Controllers
 
                 Electron.IpcMain.On("manage-window", async (args) =>
                 {
+
                     var browserWindow = await Electron.WindowManager.CreateWindowAsync(viewPath);
                     browserWindow.OnMove += UpdateReply;
                     browserWindow.OnResize += UpdateReply;

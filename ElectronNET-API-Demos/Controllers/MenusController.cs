@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ElectronNET.API.Entities;
 using ElectronNET.API;
 
-namespace ElectronNET_API_Demos.Controllers
+namespace ElectronNET.WebApp.Controllers
 {
     public class MenusController : Controller
     {
@@ -11,8 +11,10 @@ namespace ElectronNET_API_Demos.Controllers
         {
             if (HybridSupport.IsElectronActive)
             {
+                Electron.App.Ready += () => CreateContextMenu();
+
                 var menu = new MenuItem[] {
-                new MenuItem { Label = "Edit", Type = MenuType.submenu, Submenu = new MenuItem[] {
+                new MenuItem { Label = "Edit", Submenu = new MenuItem[] {
                     new MenuItem { Label = "Undo", Accelerator = "CmdOrCtrl+Z", Role = MenuRole.undo },
                     new MenuItem { Label = "Redo", Accelerator = "Shift+CmdOrCtrl+Z", Role = MenuRole.redo },
                     new MenuItem { Type = MenuType.separator },
@@ -22,7 +24,7 @@ namespace ElectronNET_API_Demos.Controllers
                     new MenuItem { Label = "Select All", Accelerator = "CmdOrCtrl+A", Role = MenuRole.selectall }
                 }
                 },
-                new MenuItem { Label = "View", Type = MenuType.submenu, Submenu = new MenuItem[] {
+                new MenuItem { Label = "View", Submenu = new MenuItem[] {
                     new MenuItem
                     {
                         Label = "Reload",
@@ -76,12 +78,12 @@ namespace ElectronNET_API_Demos.Controllers
                     }
                 }
                 },
-                new MenuItem { Label = "Window", Role = MenuRole.window, Type = MenuType.submenu, Submenu = new MenuItem[] {
+                new MenuItem { Label = "Window", Role = MenuRole.window, Submenu = new MenuItem[] {
                      new MenuItem { Label = "Minimize", Accelerator = "CmdOrCtrl+M", Role = MenuRole.minimize },
                      new MenuItem { Label = "Close", Accelerator = "CmdOrCtrl+W", Role = MenuRole.close }
                 }
                 },
-                new MenuItem { Label = "Help", Role = MenuRole.help, Type = MenuType.submenu, Submenu = new MenuItem[] {
+                new MenuItem { Label = "Help", Role = MenuRole.help, Submenu = new MenuItem[] {
                     new MenuItem
                     {
                         Label = "Learn More",
@@ -93,7 +95,6 @@ namespace ElectronNET_API_Demos.Controllers
 
                 Electron.Menu.SetApplicationMenu(menu);
 
-                CreateContextMenu();
             }
 
             return View();
@@ -112,10 +113,8 @@ namespace ElectronNET_API_Demos.Controllers
                 new MenuItem { Label = "Electron.NET", Type = MenuType.checkbox, Checked = true }
             };
 
-            Electron.App.BrowserWindowFocus += () => {
-                var mainWindow = Electron.WindowManager.BrowserWindows.FirstOrDefault();
-                Electron.Menu.SetContextMenu(mainWindow, menu);
-            };
+            var mainWindow = Electron.WindowManager.BrowserWindows.FirstOrDefault();
+            Electron.Menu.SetContextMenu(mainWindow, menu);
 
             Electron.IpcMain.On("show-context-menu", (args) =>
             {

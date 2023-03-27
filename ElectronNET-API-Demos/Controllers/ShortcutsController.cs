@@ -3,7 +3,7 @@ using ElectronNET.API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace ElectronNET_API_Demos.Controllers
+namespace ElectronNET.WebApp.Controllers
 {
     public class ShortcutsController : Controller
     {
