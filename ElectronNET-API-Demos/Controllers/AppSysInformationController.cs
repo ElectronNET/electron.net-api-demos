@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using ElectronNET.API;
 using ElectronNET.API.Entities;
 
-namespace ElectronNET_API_Demos.Controllers
+namespace ElectronNET.WebApp.Controllers
 {
     public class AppSysInformationController : Controller
     {
@@ -21,7 +21,7 @@ namespace ElectronNET_API_Demos.Controllers
 
                 Electron.IpcMain.On("sys-info", async (args) =>
                 {
-                    string homePath = await Electron.App.GetPathAsync(PathName.home);
+                    string homePath = await Electron.App.GetPathAsync(PathName.Home);
 
                     var mainWindow = Electron.WindowManager.BrowserWindows.First();
                     Electron.IpcMain.Send(mainWindow, "got-sys-info", homePath);
